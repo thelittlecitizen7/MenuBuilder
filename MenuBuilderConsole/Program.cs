@@ -17,9 +17,7 @@ namespace MenuBuilderConsole
         static void Main(string[] args)
         {
             IMenuBuilder textMenuBuilder = new TextMenuBuilder("Menu Text").
-               AddOptions("Exist", new ExistProgramOptionMenu())
-                .SetSystemInput(new SystemInput())
-                .SetSystemOutput(new ConsoleOutput());
+               AddOptions("Exist", new ExistProgramOptionMenu());
 
             List<IValidation> validations = new List<IValidation>();
             validations.Add(new InputNumberValidation());
@@ -27,12 +25,9 @@ namespace MenuBuilderConsole
             IMenuBuilder numberMenuBuilder = new NumberMenuBuilder("Menu Number")
                  .AddOptions("Exist", new ExistProgramOptionMenu())
                  .AddOptions("Move to Other", new MoveMenuOption(textMenuBuilder.Build()))
-                 .SetValidations(validations)
-                 .SetSystemInput(new SystemInput())
-                 .SetSystemOutput(new ConsoleOutput());
+                 .SetValidations(validations);
 
-
-            textMenuBuilder.AddOptions("Move to number menu", new MoveMenuOption(numberMenuBuilder.Build()));
+            textMenuBuilder.AddOptions("Move", new MoveMenuOption(numberMenuBuilder.Build()));
 
             textMenuBuilder.Build().Run();
         }

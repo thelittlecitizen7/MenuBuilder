@@ -2,6 +2,7 @@
 
 using MenuBuilder.Menus.NumberMenu.validations;
 using MenuBuilder.Options;
+using MenuBuilder.output;
 using System;
 using System.Collections.Generic;
 using System.Reflection.Metadata.Ecma335;
@@ -52,7 +53,20 @@ namespace MenuBuilder.Menus.NumberMenu
         }
         public IMenu Build()
         {
+            ValidationParams();
             return new NumberMenu(this);
+        }
+
+        private void ValidationParams()
+        {
+            if (OutputSystemOption == null) 
+            {
+                OutputSystemOption = new ConsoleOutput();
+            }
+            if (InputSystem == null)
+            {
+                InputSystem = new SystemInput();
+            }
         }
 
         

@@ -2,6 +2,7 @@
 using MenuBuilder.Menus.TextFreeMenu.options;
 
 using MenuBuilder.Options;
+using MenuBuilder.output;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -59,7 +60,20 @@ namespace MenuBuilder.Menus.TextFreeMenu
 
         public IMenu Build()
         {
+            ValidationParams();
             return new TextMenu(this);
+        }
+
+        private void ValidationParams()
+        {
+            if (OutputSystemOption == null)
+            {
+                OutputSystemOption = new ConsoleOutput();
+            }
+            if (InputSystem == null)
+            {
+                InputSystem = new SystemInput();
+            }
         }
     }
 }

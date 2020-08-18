@@ -34,7 +34,7 @@ namespace MenuBuilder.Menus.NumberMenu
         {
             Title = title;
             MenuMap = new Dictionary<string, IOptions>();
-            Validations = new List<IValidation>();
+            Validations = new List<IValidation>() { new InputNumberValidation() };
             OutputSystemOption = outputSystem;
             InputSystem = systemInput;
         }
@@ -50,8 +50,8 @@ namespace MenuBuilder.Menus.NumberMenu
         
         public IMenuBuilder SetValidations(List<IValidation> validations)
         {
+            
             validations.ForEach(v => Validations.Add(v));
-            Validations = validations;
             return this;
         }
         public IMenuBuilder SetSystemOutput(IOutputSystem outputSystemOption)

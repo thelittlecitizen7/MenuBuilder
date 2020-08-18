@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "MenuBuilderConsole/1.0.0": {
+        "dependencies": {
+          "MenuBuilder": "1.0.0"
+        },
+        "runtime": {
+          "MenuBuilderConsole.dll": {}
+        }
+      },
+      "MenuBuilder/1.0.0": {
+        "runtime": {
+          "MenuBuilder.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MenuBuilderConsole/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MenuBuilder/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

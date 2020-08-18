@@ -85,7 +85,7 @@ namespace MenuBuilder.Menus.TextFreeMenu
             {
                 foreach (var validationOption in Validations)
                 {
-                    validationOption.validate(input);
+                    validationOption.Validate(input);
                 }
 
                 IOptions option = GetOption(input);

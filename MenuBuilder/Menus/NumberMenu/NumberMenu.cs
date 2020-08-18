@@ -92,7 +92,7 @@ namespace MenuBuilder.Menus.NumberMenu
             {
                     foreach (var validationOption in Validations)
                     {
-                        validationOption.validate(input);
+                        validationOption.Validate(input);
                     }
                     IOptions option = GetOption(int.Parse(input));
                     if (option == null)

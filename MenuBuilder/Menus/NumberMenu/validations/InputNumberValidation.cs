@@ -8,7 +8,7 @@ namespace MenuBuilder.Menus.NumberMenu.validations
 {
     public class InputNumberValidation : IValidation
     {
-        public void validate(string number)
+        public void Validate(string number)
         {
             int numberTry;
             bool isNumber = int.TryParse(number,out numberTry);

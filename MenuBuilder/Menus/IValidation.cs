@@ -6,6 +6,6 @@ namespace MenuBuilder.Menus
 {
     public interface IValidation
     {
-        void validate(string input);
+        void Validate(string input);
     }
 }

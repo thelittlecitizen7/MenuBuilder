@@ -8,6 +8,5 @@ namespace MenuBuilder.IO.Input
     {
         string StringInput();
 
-        int IntInput();
     }
 }

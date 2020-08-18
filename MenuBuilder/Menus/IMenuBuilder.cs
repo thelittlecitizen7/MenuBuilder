@@ -11,6 +11,8 @@ namespace MenuBuilder.Menus
         string Title { get; set; }
         Dictionary<string, IOptions> MenuMap { get; set; }
 
+        List<IValidation> Validations { get; set; }
+
         IOutputSystem OutputSystemOption { get; set; }
 
         ISystemInput InputSystem { get; set; }
@@ -20,8 +22,6 @@ namespace MenuBuilder.Menus
         IMenuBuilder SetSystemInput(ISystemInput systemInputOption);
 
         IMenuBuilder AddOptions(string description, IOptions menuOptions);
-
-        List<IValidation> Validations { get; set; }
 
         IMenuBuilder SetValidations(List<IValidation> validations);
 

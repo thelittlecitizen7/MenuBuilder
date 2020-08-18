@@ -24,7 +24,6 @@ namespace MenuBuilder.Menus.TextFreeMenu
             Title = textMenuBuilder.Title;
             MenuMap = textMenuBuilder.MenuMap;
             Validations = textMenuBuilder.Validations;
-
             OutputSystem = textMenuBuilder.OutputSystemOption;
             InputSystem = textMenuBuilder.InputSystem;
 
@@ -65,7 +64,7 @@ namespace MenuBuilder.Menus.TextFreeMenu
             }
             catch (TextMenuError menuError)
             {
-                OutputSystem.Print($"text menu error validation with {menuError.Message}");
+                OutputSystem.Print($"Text menu error validation with {menuError.Message}");
 
             }
             catch (Exception e)
@@ -91,7 +90,7 @@ namespace MenuBuilder.Menus.TextFreeMenu
                 IOptions option = GetOption(input);
                 if (option == null)
                 {
-                    throw new TextOptionNotExistError("paramter not found in options");
+                    throw new TextOptionNotExistError($"option {input} not found in options");
                 }
                 runFlag = false;
 

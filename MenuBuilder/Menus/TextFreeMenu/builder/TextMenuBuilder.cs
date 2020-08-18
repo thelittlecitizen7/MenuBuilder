@@ -12,13 +12,12 @@ namespace MenuBuilder.Menus.TextFreeMenu
 {
     public class TextMenuBuilder : IMenuBuilder
     {
-        public Dictionary<string, IOptions> MenuMap { get ; set ; }
-        public List<IValidation> Validations { get ; set ; }
+        public Dictionary<string, IOptions> MenuMap { get; set; }
+        public List<IValidation> Validations { get; set; }
 
         public IOutputSystem OutputSystemOption { get; set; }
 
         public ISystemInput InputSystem { get; set; }
-        
 
         public string Title { get; set; }
 
@@ -28,52 +27,47 @@ namespace MenuBuilder.Menus.TextFreeMenu
             Validations = new List<IValidation>();
             MenuMap = new Dictionary<string, IOptions>();
             Title = title;
+            OutputSystemOption = new ConsoleOutput();
+            InputSystem = new SystemInput();
         }
 
-        public Menus.IMenuBuilder AddOptions(string description, IOptions menuOptions)
+        public TextMenuBuilder(string title, IOutputSystem outputSystem, SystemInput systemInput)
+        {
+            Validations = new List<IValidation>();
+            MenuMap = new Dictionary<string, IOptions>();
+            Title = title;
+            OutputSystemOption = outputSystem;
+            InputSystem = systemInput;
+        }
+
+        public IMenuBuilder AddOptions(string description, IOptions menuOptions)
         {
             MenuMap.Add(description, menuOptions);
             return this;
         }
 
-        
-
-        public Menus.IMenuBuilder SetValidations(List<IValidation> validations)
+        public IMenuBuilder SetValidations(List<IValidation> validations)
         {
             Validations = validations;
             return this;
         }
 
-        public Menus.IMenuBuilder SetSystemOutput(IOutputSystem outputSystemOption) 
+        public IMenuBuilder SetSystemOutput(IOutputSystem outputSystemOption)
         {
             OutputSystemOption = outputSystemOption;
             return this;
         }
 
-
-        public Menus.IMenuBuilder SetSystemInput(ISystemInput systemInputOption)
+        public IMenuBuilder SetSystemInput(ISystemInput systemInputOption)
         {
             InputSystem = systemInputOption;
             return this;
         }
 
-
         public IMenu Build()
         {
-            ValidationParams();
             return new TextMenu(this);
         }
 
-        private void ValidationParams()
-        {
-            if (OutputSystemOption == null)
-            {
-                OutputSystemOption = new ConsoleOutput();
-            }
-            if (InputSystem == null)
-            {
-                InputSystem = new SystemInput();
-            }
-        }
     }
 }

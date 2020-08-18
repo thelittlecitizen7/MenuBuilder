@@ -24,10 +24,23 @@ namespace MenuBuilder.Menus.NumberMenu
         {
             Title = title;
             MenuMap = new Dictionary<string, IOptions>();
-            Validations = new List<IValidation>();
+            Validations = new List<IValidation>() { new InputNumberValidation()};
+            OutputSystemOption = new ConsoleOutput();
+            InputSystem = new SystemInput();
         }
 
-        
+
+        public NumberMenuBuilder(string title , IOutputSystem outputSystem , SystemInput systemInput)
+        {
+            Title = title;
+            MenuMap = new Dictionary<string, IOptions>();
+            Validations = new List<IValidation>();
+            OutputSystemOption = outputSystem;
+            InputSystem = systemInput;
+        }
+
+
+
         public IMenuBuilder AddOptions(string description, IOptions menuOptions)
         {
             MenuMap.Add(description, menuOptions);
@@ -37,6 +50,7 @@ namespace MenuBuilder.Menus.NumberMenu
         
         public IMenuBuilder SetValidations(List<IValidation> validations)
         {
+            validations.ForEach(v => Validations.Add(v));
             Validations = validations;
             return this;
         }
@@ -53,22 +67,7 @@ namespace MenuBuilder.Menus.NumberMenu
         }
         public IMenu Build()
         {
-            ValidationParams();
             return new NumberMenu(this);
         }
-
-        private void ValidationParams()
-        {
-            if (OutputSystemOption == null) 
-            {
-                OutputSystemOption = new ConsoleOutput();
-            }
-            if (InputSystem == null)
-            {
-                InputSystem = new SystemInput();
-            }
-        }
-
-        
     }
 }

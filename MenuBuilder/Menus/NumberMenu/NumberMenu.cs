@@ -17,7 +17,6 @@ namespace MenuBuilder.Menus.NumberMenu
 
         public IOutputSystem OutputSystem { get; set; }
 
-
         public ISystemInput InputSystem { get; set; }
         public string Title { get ; set ; }
 
@@ -30,11 +29,10 @@ namespace MenuBuilder.Menus.NumberMenu
             InputSystem = numberMenuBuilder.InputSystem;
         }
 
-
         public IOptions GetOption(int optionNumber)
         {
             int count = 0;
-            foreach (var option in MenuMap)
+            foreach (KeyValuePair<string,IOptions> option in MenuMap)
             {
                 if (count == optionNumber) 
                 {
@@ -78,26 +76,25 @@ namespace MenuBuilder.Menus.NumberMenu
             }
             catch (Exception e)
             {
-                OutputSystem.Print($"Error occurd in this Menu {e.Message}");
+                OutputSystem.Print($"Failed With menu : {e.Message}");
             }
             Run();
         }
      
-
         private int ValidateInput(string input)
         {
             bool runFlag = true;
 
             while (runFlag)
             {
-                    foreach (var validationOption in Validations)
+                    foreach (IValidation validationOption in Validations)
                     {
                         validationOption.Validate(input);
                     }
                     IOptions option = GetOption(int.Parse(input));
                     if (option == null)
                     {
-                        throw new NumberMenuValidationError("paramter not found in options");
+                        throw new NumberMenuValidationError($"paramter {input} not found in options");
                     }
                     runFlag = false;
             }

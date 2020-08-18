@@ -8,12 +8,6 @@ namespace MenuBuilder.Menus.TextFreeMenu
 {
     public interface ITextMenu : IMenu
     {
-
-
-
         IOptions GetOption(string option);
-
-        
-
     }
 }

@@ -8,7 +8,6 @@ namespace MenuBuilder.output
     {
         public ConsoleOutput()
         {
-
         }
         public void Print(string msg)
         {

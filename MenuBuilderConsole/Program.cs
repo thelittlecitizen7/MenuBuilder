@@ -24,8 +24,7 @@ namespace MenuBuilderConsole
 
             IMenuBuilder numberMenuBuilder = new NumberMenuBuilder("Menu Number")
                  .AddOptions("Exist", new ExistProgramOptionMenu())
-                 .AddOptions("Move to Other", new MoveMenuOption(textMenuBuilder.Build()))
-                 .SetValidations(validations);
+                 .AddOptions("Move to Other", new MoveMenuOption(textMenuBuilder.Build()));
 
             textMenuBuilder.AddOptions("Move", new MoveMenuOption(numberMenuBuilder.Build()));
 

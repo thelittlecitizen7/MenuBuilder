@@ -8,11 +8,6 @@ namespace MenuBuilder.IO.Input
     {
         public SystemInput()
         {
-
-        }
-        public int IntInput()
-        {
-            return int.Parse(Console.ReadLine());
         }
 
         public string StringInput()

@@ -30,7 +30,7 @@ namespace MenuBuilder.Menus.NumberMenu
         }
 
 
-        public NumberMenuBuilder(string title , IOutputSystem outputSystem , SystemInput systemInput)
+        public NumberMenuBuilder(string title , IOutputSystem outputSystem , ISystemInput systemInput)
         {
             Title = title;
             MenuMap = new Dictionary<string, IOptions>();

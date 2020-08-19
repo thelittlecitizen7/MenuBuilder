@@ -31,7 +31,7 @@ namespace MenuBuilder.Menus.TextFreeMenu
             InputSystem = new SystemInput();
         }
 
-        public TextMenuBuilder(string title, IOutputSystem outputSystem, SystemInput systemInput)
+        public TextMenuBuilder(string title, IOutputSystem outputSystem, ISystemInput systemInput)
         {
             Validations = new List<IValidation>();
             MenuMap = new Dictionary<string, IOptions>();
